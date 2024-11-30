@@ -10,10 +10,8 @@ app.use(
   cors({
     // origin: ["http://localhost:3000"],
     // origin: ["http://mysssbuckettt.s3-website.ap-northeast-2.amazonaws.com"],
-
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    origin: ["https://d211ra9qfcxsu7.cloudfront.net"],
+    // origin: ["https://d211ra9qfcxsu7.cloudfront.net"],
+    origin: ["*"],
     credentials: true,
   })
 );
