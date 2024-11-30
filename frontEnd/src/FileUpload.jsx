@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import GetList from "./GetList";
+import { ipUrl } from "./util/util";
 
 const FileUpload = () => {
   async function saveClick() {
     console.log(english, korea);
     if (english !== "" && korea !== "") {
-      const { data } = await axios.post(
-        "http://localhost:8000/saveClick",
+      // const { data } = await axios.post(
+      const { data } = await ipUrl.post(
+        "/saveClick",
         { english, korea },
         { withCredentials: true }
       );

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { ipUrl } from "./util/util";
 
 const StyledGetList = styled.div`
   padding: 0;
@@ -37,12 +38,13 @@ const GetList = (data) => {
   const [list, setList] = useState([]);
 
   async function getList() {
-    const { data } = await axios.get("http://localhost:8000/getList");
+    // console.log(111, ipUrl);
+    const { data } = await ipUrl.get("/getList");
     setList(data);
   }
 
   async function remove(title) {
-    const { data } = await axios.post("http://localhost:8000/removeList", {
+    const { data } = await ipUrl.post("/removeList", {
       title,
     });
 
