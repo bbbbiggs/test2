@@ -11,12 +11,10 @@ app.use(
     // origin: ["http://localhost:3000"],
     // origin: ["http://mysssbuckettt.s3-website.ap-northeast-2.amazonaws.com"],
 
-    origin: ["https://d1mgx07wg6eqil.cloudfront.net"],
+    origin: "https://d1mgx07wg6eqil.cloudfront.net",
     credentials: true,
   })
 );
-
-app.options("*", cors()); // 모든 OPTIONS 요청에 대해 CORS 허용
 
 const mainRouter = require("./routers/mainRouter");
 
