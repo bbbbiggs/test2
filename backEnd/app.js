@@ -6,6 +6,23 @@ const app = express();
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://d1mgx07wg6eqil.cloudfront.net"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
+
+app.get("/getList", (req, res) => {
+  res.json({ message: "CORS is working!" });
+});
+
 app.use(
   cors({
     // origin: ["http://localhost:3000"],
