@@ -39,14 +39,21 @@ const GetList = (data) => {
 
   async function getList() {
     // console.log(111, ipUrl);
-    const { data } = await ipUrl.get("/getList");
+    const { data } = await ipUrl.get("/getList", { withCredentials: true });
+
+    // const response = await instance.post(`/login`, eventData, { withCredentials: true });
+    // return response.data;
     setList(data);
   }
 
   async function remove(title) {
-    const { data } = await ipUrl.post("/removeList", {
-      title,
-    });
+    const { data } = await ipUrl.post(
+      "/removeList",
+      {
+        title,
+      },
+      { withCredentials: true }
+    );
 
     console.log(data);
 
