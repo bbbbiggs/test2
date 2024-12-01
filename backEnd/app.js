@@ -13,29 +13,9 @@ app.use(express.json());
 
 //     // origin: "https://d1mgx07wg6eqil.cloudfront.net",
 //     origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
-//     // origin: "*",
 //     credentials: true,
 //   })
 // );
-app.use("/", mainRouter);
-
-// ----
-// CORS 설정
-app.use(
-  cors({
-    origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app", // 허용할 프론트엔드 도메인
-    methods: "GET,POST,PUT,DELETE,OPTIONS", // 허용할 HTTP 메서드
-    allowedHeaders: "Content-Type,Authorization", // 허용할 헤더
-  })
-);
-
-// 라우트 예시
-app.get("/getList", (req, res) => {
-  res.json({ message: "CORS 설정 완료" });
-});
-
-app.listen(3000, () => console.log("Server running on port 3000"));
-// ----
 
 const mainRouter = require("./routers/mainRouter");
 
@@ -48,6 +28,8 @@ sequelize
     console.log(err);
   });
 
-// const server = app.listen(8000, () => {
-//   console.log("server on");
-// });
+app.use("/", mainRouter);
+
+const server = app.listen(8000, () => {
+  console.log("server on");
+});
