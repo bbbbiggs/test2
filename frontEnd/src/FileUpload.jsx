@@ -42,7 +42,7 @@ const FileUpload = () => {
         value={korea}
       />
       <br />
-      <button onClick={() => saveClick()}>저장</button>
+      <button onClick={() => saveClick()}>저장잉잉</button>
 
       <hr />
       <GetList reload={reload} />
