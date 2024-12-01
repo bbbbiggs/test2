@@ -4,6 +4,7 @@ const { sequelize } = require("./models");
 const cors = require("cors");
 const app = express();
 
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(
@@ -12,8 +13,8 @@ app.use(
     // origin: ["http://mysssbuckettt.s3-website.ap-northeast-2.amazonaws.com"],
 
     // origin: "https://d1mgx07wg6eqil.cloudfront.net",
-    // origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
-    origin: "*",
+    origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
+    // origin: "*",
     credentials: true,
   })
 );
