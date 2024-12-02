@@ -3,32 +3,29 @@ const dot = require("dotenv").config();
 const { sequelize } = require("./models");
 const cors = require("cors");
 const app = express();
-const mainRouter = require("./routers/mainRouter");
 
 app.use(express.json());
-// app.use("/", mainRouter);
 
-// app.use(
-//   cors({
-//     // origin: ["http://localhost:3000"],
-//     // origin: ["http://mysssbuckettt.s3-website.ap-northeast-2.amazonaws.com"],
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods", "GET,POST");
+//   res.header("Access-Control-Allow-Headers", "Content-Type");
+//   next();
+// });
 
-//     // origin: "https://d1mgx07wg6eqil.cloudfront.net",
-//     // origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
-//     origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
-//     credentials: true,
-//   })
-// );
-app.use(cors());
+app.use(
+  cors({
+    // origin: ["http://localhost:3000"],
+    // origin: ["http://mysssbuckettt.s3-website.ap-northeast-2.amazonaws.com"],
 
-app.get("/getList", cors(), async function (req, res, next) {
-  try {
-    const data = await UploadedFilesList.findAll({});
-    res.json(data);
-  } catch (error) {
-    console.log(error);
-  }
-});
+    // origin: "https://d1mgx07wg6eqil.cloudfront.net",
+    // origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
+    origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
+    credentials: true,
+  })
+);
+
+const mainRouter = require("./routers/mainRouter");
 
 sequelize
   .sync({ force: false })
@@ -38,6 +35,8 @@ sequelize
   .catch((err) => {
     console.log(err);
   });
+
+app.use("/", mainRouter);
 
 const server = app.listen(8000, () => {
   console.log("server on");
