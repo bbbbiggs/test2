@@ -6,6 +6,17 @@ const app = express();
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 app.use(
   cors({
     // origin: ["http://localhost:3000"],
@@ -13,19 +24,10 @@ app.use(
 
     // origin: "https://d1mgx07wg6eqil.cloudfront.net",
     // origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
-    origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app:80",
+    origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
     credentials: true,
   })
 );
-
-// CORS 설정
-// app.use(
-//   cors({
-//     origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app", // 허용할 프론트엔드 도메인
-//     methods: ["GET", "POST", "OPTIONS"], // 허용할 HTTP 메서드
-//     allowedHeaders: ["Content-Type", "Authorization"], // 허용할 헤더
-//   })
-// );
 
 const mainRouter = require("./routers/mainRouter");
 
@@ -39,6 +41,17 @@ sequelize
   });
 
 app.use("/", mainRouter);
+
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  next();
+});
 
 const server = app.listen(8000, () => {
   console.log("server on");
