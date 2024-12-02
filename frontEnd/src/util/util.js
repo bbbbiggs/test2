@@ -5,6 +5,5 @@ const ipUrl = axios.create({
   // baseURL: "http://localhost:8000", // 로컬
 
   withCredentials: true,
-  origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
 });
 export { ipUrl };
