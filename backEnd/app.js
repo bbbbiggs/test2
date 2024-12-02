@@ -6,7 +6,7 @@ const app = express();
 const mainRouter = require("./routers/mainRouter");
 
 app.use(express.json());
-app.use("/", mainRouter);
+// app.use("/", mainRouter);
 
 // app.use(
 //   cors({
@@ -20,6 +20,15 @@ app.use("/", mainRouter);
 //   })
 // );
 app.use(cors());
+
+app.get("/getList", cors(), async function (req, res, next) {
+  try {
+    const data = await UploadedFilesList.findAll({});
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 sequelize
   .sync({ force: false })
