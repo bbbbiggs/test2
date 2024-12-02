@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import GetList from "./GetList";
 import { ipUrl } from "./util/util";
 
