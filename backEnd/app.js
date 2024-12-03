@@ -12,8 +12,8 @@ app.use(
     // origin: ["http://mysssbuckettt.s3-website.ap-northeast-2.amazonaws.com"],
 
     origin: [
-      "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
-      "https://port-0-test2-m3viba9m327f6c46.sel4.cloudtype.app",
+      // "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
+      "https://d1mgx07wg6eqil.cloudfront.net/",
     ],
     credentials: true,
     optionsSuccessStatus: 200,
