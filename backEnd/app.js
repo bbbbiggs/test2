@@ -6,15 +6,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app"
-  );
-  // res.header("Access-Control-Allow-Methods", "GET,POST");
-  // res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use(
   cors({
@@ -23,8 +16,18 @@ app.use(
 
     // origin: "https://d1mgx07wg6eqil.cloudfront.net",
     // origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
-    origin: "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
+    origin: ["https://web-front-m3viba9m327f6c46.sel4.cloudtype.app"],
     credentials: true,
+  })
+);
+
+app.use(
+  session({
+    secret: process.env.SESSION_KEY,
+    resave: false,
+    saveUninitialized: false,
+    proxy: true,
+    cookie: { sameSite: "none", secure: true, maxAge: 600000, httpOnly: true }, // 이 부분에서 secure 옵션을 true로 설정합니다.
   })
 );
 
