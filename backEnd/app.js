@@ -6,6 +6,7 @@ const app = express();
 
 app.use(express.json());
 
+const cookieParser = require("cookie-parser");
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
