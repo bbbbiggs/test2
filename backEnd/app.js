@@ -11,19 +11,19 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(
-  cors({
-    // origin: ["http://localhost:3000"],
-    // origin: ["http://mysssbuckettt.s3-website.ap-northeast-2.amazonaws.com"],
+// app.use(
+//   cors({
+//     // origin: ["http://localhost:3000"],
+//     // origin: ["http://mysssbuckettt.s3-website.ap-northeast-2.amazonaws.com"],
 
-    origin: [
-      // "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
-      "https://d1mgx07wg6eqil.cloudfront.net/",
-    ],
-    credentials: true,
-    optionsSuccessStatus: 200,
-  })
-);
+//     origin: [
+//       // "https://web-front-m3viba9m327f6c46.sel4.cloudtype.app",
+//       "https://d1mgx07wg6eqil.cloudfront.net/",
+//     ],
+//     credentials: true,
+//     optionsSuccessStatus: 200,
+//   })
+// );
 
 const mainRouter = require("./routers/mainRouter");
 
